@@ -5,6 +5,11 @@ public class BubbleSort implements Sortable {
     long elapsedTime;
 
     @Override
+    public String name() {
+        return "Bubble sort";
+    }
+
+    @Override
     public int[] sort(int[] arr){
         int length = arr.length;
         long startTime = System.nanoTime();

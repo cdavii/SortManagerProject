@@ -8,9 +8,14 @@ public class BinaryTree implements Sortable {
 
     private Node rootNode;
     private int numberOfNodes;
-    private ArrayList<Integer> sorted = new ArrayList<Integer>();
+    private ArrayList<Integer> sorted = new ArrayList<>();
     private long elapsedTime;
 
+
+    @Override
+    public String name() {
+        return "Binary tree sort";
+    }
 
     @Override
     public int[] sort(int[] array) {
@@ -34,7 +39,7 @@ public class BinaryTree implements Sortable {
     }
 
     private int[] getSorted() {
-        return sorted.stream().mapToInt(i -> (int) i).toArray();
+        return sorted.stream().mapToInt(i -> i).toArray();
     }
 
     void addNodeRecursive(Node currentNode, final int element) {

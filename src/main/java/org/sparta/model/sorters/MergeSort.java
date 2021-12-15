@@ -5,6 +5,11 @@ public class MergeSort implements Sortable{
     long elapsedTime;
 
     @Override
+    public String name() {
+        return "Merge sort";
+    }
+
+    @Override
     public int[] sort(int[] array) {
         return mergeSort(array, new int[array.length], 0, array.length - 1);
     }
