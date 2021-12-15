@@ -1,13 +1,11 @@
 package org.sparta;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import static org.sparta.Start.run;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        run();
     }
 }
