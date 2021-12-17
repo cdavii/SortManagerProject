@@ -2,7 +2,7 @@ package org.sparta.model.sorters;
 
 public interface Sortable {
 
-    String name();
+    String getName();
 
     int[] sort(int[] array);
 

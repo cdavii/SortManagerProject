@@ -17,7 +17,7 @@ public class BinaryTree implements Sortable {
 
 
     @Override
-    public String name() {
+    public String getName() {
         return "Binary tree sort";
     }
 

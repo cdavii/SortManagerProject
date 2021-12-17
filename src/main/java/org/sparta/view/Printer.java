@@ -11,7 +11,7 @@ public class Printer {
     }
 
     public static void printInfo(Sortable sorter, int[] random) {
-        System.out.print(sorter.name() + " selected.\n" +
+        System.out.print(sorter.getName() + " selected.\n" +
                 "Before sorting:\n" + Arrays.toString(random) +
                 "\nAfter sorting: \n" + Arrays.toString(sorter.sort(random)) +
                 "\nOperation took " + sorter.getTime() + " microseconds");

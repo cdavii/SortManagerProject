@@ -10,7 +10,7 @@ public class MergeSort implements Sortable{
     long elapsedTime;
 
     @Override
-    public String name() {
+    public String getName() {
         return "Merge sort";
     }
 
@@ -30,7 +30,6 @@ public class MergeSort implements Sortable{
 
     private int[] mergeSort(int[] arr, int[] temp, int leftStart, int rightEnd) {
         long startTime = System.nanoTime();
-        myLogger.log(Level.FINE, "Array initialised by" + name());
 
         if (leftStart >= rightEnd) {
             return null;
@@ -42,12 +41,10 @@ public class MergeSort implements Sortable{
 
         long endTime = System.nanoTime();
         elapsedTime = (endTime - startTime) / 1000;
-        myLogger.log(Level.FINE, "Sort operation finished by" + name());
         return arr;
     }
 
     private static int[] mergeHalves(int[] arr, int[] temp, int leftStart, int rightEnd) {
-        myLogger.log(Level.FINE, "mergeHalves method called");
         int leftEnd = (rightEnd + leftStart) / 2;
         int rightStart = leftEnd + 1;
         int size = rightEnd - leftStart + 1;

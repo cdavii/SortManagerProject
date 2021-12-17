@@ -11,14 +11,14 @@ public class BubbleSort implements Sortable {
     int swaps = 0;
 
     @Override
-    public String name() {
+    public String getName() {
         return "Bubble sort";
     }
 
     @Override
     public int[] sort(int[] arr){
         int length = arr.length;
-        myLogger.log(Level.FINE, "Array initialised by" + name());
+        myLogger.log(Level.FINE, "Array initialised by" + getName());
         long startTime = System.nanoTime();
 
         for (int i = 0; i < length; i++){
@@ -30,7 +30,7 @@ public class BubbleSort implements Sortable {
             }
         }
         myLogger.log(Level.FINE, "Swap method called " + swaps + " time(s)");
-        myLogger.log(Level.FINE, "Sort operation finished by" + name());
+        myLogger.log(Level.FINE, "Sort operation finished by" + getName());
         long endTime = System.nanoTime();
         elapsedTime = (endTime - startTime) / 1000;
         myLogger.log(Level.INFO, "Array after sorting:\n" + Arrays.toString(arr));
