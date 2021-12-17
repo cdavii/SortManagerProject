@@ -29,6 +29,13 @@ public class ArrayGeneratorTests {
         Assertions.assertInstanceOf(int[].class, arrayGenerator.randomArrayGenerator(10));
     }
 
+    @Test
+    @DisplayName("Test empty array")
+    void testEmptyArray() {
+        int[] expected = new int[0];
+        Assertions.assertArrayEquals(expected, arrayGenerator.randomArrayGenerator(0));
+    }
+
     @AfterEach
     void tearDown(TestInfo testInfo) {
         System.out.println(testInfo.getDisplayName() + " has finished testing.");
