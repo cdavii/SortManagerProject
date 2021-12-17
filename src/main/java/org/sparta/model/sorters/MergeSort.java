@@ -1,5 +1,10 @@
 package org.sparta.model.sorters;
 
+import java.util.Arrays;
+import java.util.logging.Level;
+
+import static org.sparta.logging.MyLogger.myLogger;
+
 public class MergeSort implements Sortable{
 
     long elapsedTime;
@@ -11,17 +16,21 @@ public class MergeSort implements Sortable{
 
     @Override
     public int[] sort(int[] array) {
-        return mergeSort(array, new int[array.length], 0, array.length - 1);
+        int[] arr = mergeSort(array, new int[array.length], 0, array.length - 1);
+        myLogger.log(Level.INFO, "Array after sorting:\n" + Arrays.toString(arr));
+        return arr;
     }
 
     @Override
     public long getTime() {
+        myLogger.log(Level.INFO, "Sort operation finished in " + elapsedTime + " microseconds.");
         return elapsedTime;
     }
 
 
     private int[] mergeSort(int[] arr, int[] temp, int leftStart, int rightEnd) {
         long startTime = System.nanoTime();
+        myLogger.log(Level.FINE, "Array initialised by" + name());
 
         if (leftStart >= rightEnd) {
             return null;
@@ -33,10 +42,12 @@ public class MergeSort implements Sortable{
 
         long endTime = System.nanoTime();
         elapsedTime = (endTime - startTime) / 1000;
+        myLogger.log(Level.FINE, "Sort operation finished by" + name());
         return arr;
     }
 
     private static int[] mergeHalves(int[] arr, int[] temp, int leftStart, int rightEnd) {
+        myLogger.log(Level.FINE, "mergeHalves method called");
         int leftEnd = (rightEnd + leftStart) / 2;
         int rightStart = leftEnd + 1;
         int size = rightEnd - leftStart + 1;

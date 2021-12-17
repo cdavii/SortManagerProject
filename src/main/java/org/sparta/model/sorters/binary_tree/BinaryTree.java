@@ -1,13 +1,17 @@
 package org.sparta.model.sorters.binary_tree;
 
+import org.sparta.logging.MyLogger;
 import org.sparta.model.sorters.Sortable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Level;
+
+import static org.sparta.logging.MyLogger.myLogger;
 
 public class BinaryTree implements Sortable {
 
     private Node rootNode;
-    private int numberOfNodes;
     private ArrayList<Integer> sorted = new ArrayList<>();
     private long elapsedTime;
 
@@ -26,41 +30,45 @@ public class BinaryTree implements Sortable {
 
     @Override
     public long getTime() {
+        myLogger.log(Level.INFO, "Sort operation finished in " + elapsedTime + " microseconds.");
         return elapsedTime;
     }
 
-    // Methods set to package-private to allow for testing
-     void buildTree(final int[] array) {
+     private void buildTree(final int[] array) {
         rootNode = new Node(array[0]);
+        myLogger.log(Level.FINE, "Tree initialised with root node of value: " + array[0]);
         for (int i = 1; i < array.length; i++) {
             addNodeRecursive(rootNode, array[i]);
-            numberOfNodes++;
         }
     }
 
     private int[] getSorted() {
-        return sorted.stream().mapToInt(i -> i).toArray();
+        int[] arr = sorted.stream().mapToInt(i -> i).toArray();
+        myLogger.log(Level.FINE, "Sort operation complete");
+        myLogger.log(Level.INFO, "Array after sorting:\n" + Arrays.toString(arr));
+        return arr;
     }
 
-    void addNodeRecursive(Node currentNode, final int element) {
+    private void addNodeRecursive(Node currentNode, final int element) {
         if (element <= currentNode.getValue()) {
             if (currentNode.isLeftChildEmpty()) {
                 currentNode.setLeftChild(new Node(element));
+                myLogger.log(Level.FINE, "Node added to tree with value: " + element);
             } else {
                 addNodeRecursive(currentNode.getLeftChild(), element);
             }
         } else {
             if (currentNode.isRightChildEmpty()) {
                 currentNode.setRightChild(new Node (element));
+                myLogger.log(Level.FINE, "Node added to tree with value: " + element);
             } else {
                 addNodeRecursive(currentNode.getRightChild(), element);
             }
         }
+
     }
 
-    void inOrderTraversal(Node currentNode) {
-        //ArrayList sorted = new ArrayList<Integer>();
-        //int index = 0;
+    private void inOrderTraversal(Node currentNode) {
         long startTime = System.nanoTime();
         if (currentNode != null) {
             inOrderTraversal(currentNode.getLeftChild());
