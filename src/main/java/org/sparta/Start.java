@@ -20,7 +20,7 @@ public class Start {
         myLogger.log(Level.INFO, "Start of program");
         Printer.printMessage("Please select a sorting algorithm: \n 1. Bubble sort \n 2. Merge sort \n 3. Binary tree sort\n");
         Sortable mySorter = loadSortingAlgorithm(UserInput.sorterSelection());
-        Printer.printMessage("Please select the size of the array\n");
+        Printer.printMessage("Please enter the size of the array to sort\n");
         int[] randomArray = loadRandomArray(UserInput.arraySizeSelection());
         UserInput.closeScanner();
 
